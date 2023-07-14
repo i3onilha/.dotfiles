@@ -150,7 +150,7 @@ tmux ls &> /dev/null
 if [ "$?" = 1 ]; then
   tmux
 else
-  mux
+  mux &> /dev/null
 fi
 
 # enable bash completion in interactive shells
