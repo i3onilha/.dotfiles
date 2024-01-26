@@ -48,7 +48,7 @@ nmap <silent> bn :bnext<CR>
 
 nmap <silent> t4 :set autoindent noexpandtab tabstop=4 shiftwidth=4 ts=4 sw=4<CR>
 nmap <silent> t2 :set autoindent noexpandtab tabstop=2 shiftwidth=2 ts=2 sw=2<CR>
-nmap <silent> nn :set nonumber! norelativenumber!<CR>
+nmap <silent> cn :set nonumber! norelativenumber!<CR>
 
 nmap <silent> se :e %<CR>
 nmap <silent> ; :e %<CR>
