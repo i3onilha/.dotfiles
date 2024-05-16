@@ -100,6 +100,7 @@ alias inator='tmuxinator'
 alias maxwindow='gnome-terminal --hide-menubar --full-screen --window -e tmux && exit'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dev='inator default'
+alias vim=nvim
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -143,6 +144,7 @@ export PATH=$PATH:/go/bin
 export PATH=$PATH:~/go/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
