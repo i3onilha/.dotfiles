@@ -150,9 +150,9 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 
 tmux ls &> /dev/null
 if [ "$?" = 1 ]; then
-  tmux
+  tmux && exit
 else
-  mux &> /dev/null
+  mux &> /dev/null && exit
 fi
 
 # enable bash completion in interactive shells
@@ -163,3 +163,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+[ ! -f ~/.vim/bundle/coc.nvim/build/index.js ] && yarn install --cwd ~/.vim/bundle/coc.nvim
