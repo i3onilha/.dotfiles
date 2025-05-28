@@ -163,3 +163,62 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# --- Kubernetes Alias & Autocomplete Setup ---
+
+# Load kubectl autocompletion
+if command -v kubectl &>/dev/null; then
+  if [[ $SHELL == *"zsh" ]]; then
+    autoload -Uz compinit
+    compinit
+    source <(kubectl completion zsh)
+  else
+    source <(kubectl completion bash)
+  fi
+
+  # Alias for kubectl and enable autocomplete
+  alias k='kubectl'
+  complete -F __start_kubectl k 2>/dev/null || compdef __start_kubectl k
+fi
+
+# --- Useful Kubernetes Functions and Aliases ---
+
+# Get all resources in all namespaces
+alias kga='kubectl get all --all-namespaces'
+
+# Switch namespace
+kns() {
+  kubectl config set-context --current --namespace="$1"
+}
+
+# Describe pod
+kdp() {
+  kubectl describe pod "$1"
+}
+
+# Tail logs of pod
+kl() {
+  kubectl logs -f "$1"
+}
+
+# Tail logs of specific container in pod
+klc() {
+  kubectl logs -f "$1" -c "$2"
+}
+
+# Show current context and namespace
+alias kctx='kubectl config current-context && kubectl config view --minify | grep namespace'
+
+# Get pods sorted by age
+alias kpods='kubectl get pods --sort-by=.metadata.creationTimestamp'
+
+# Apply all YAML manifests in current directory
+alias kap='kubectl apply -f .'
+
+# Delete all pods in current namespace
+alias kdelpods='kubectl delete pod --all'
+
+# Port forward: usage `kpf <pod> <localPort> <remotePort>`
+kpf() {
+  kubectl port-forward "$1" "$2":"$3"
+}
