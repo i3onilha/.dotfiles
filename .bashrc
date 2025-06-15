@@ -222,3 +222,7 @@ alias kdelpods='kubectl delete pod --all'
 kpf() {
   kubectl port-forward "$1" "$2":"$3"
 }
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
