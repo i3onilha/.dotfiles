@@ -144,7 +144,7 @@ export PATH=$PATH:/go/bin
 export PATH=$PATH:~/go/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
